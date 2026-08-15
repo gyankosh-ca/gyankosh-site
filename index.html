@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gyankosh Inc. — Generative AI Training &amp; Educational Software</title>
+<meta name="description" content="Gyankosh Inc. is a Canadian software company. We deliver Generative AI training to individuals and organizations, and publish our own educational software.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<meta property="og:title" content="Gyankosh Inc.">
+<meta property="og:description" content="Generative AI training for individuals and organizations, and our own educational software.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gyankosh.ca/">
+<link rel="canonical" href="https://gyankosh.ca/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Gyankosh Inc.",
+  "url": "https://gyankosh.ca",
+  "email": "hello@gyankosh.ca",
+  "logo": "https://gyankosh.ca/assets/logo-lockup.svg",
+  "slogan": "Knowledge is the supreme goal",
+  "description": "Canadian software company delivering Generative AI training to individuals and organizations, and publishing its own educational software.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brampton",
+    "addressRegion": "ON",
+    "addressCountry": "CA"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   Gyankosh Inc. — corporate one-pager
+
+   Visual system follows the Academy "Oxford Slate" cover
+   treatment (Templates/Academy-Deck-System/Deck - Oxford Slate.html,
+   Templates/Academy-Design-System/layouts/cover.html):
+     · layered gradient ground, not flat black
+     · logo as a large visual anchor, not a corner mark
+     · Spectral display · Inter body · IBM Plex Mono labels
+   Fonts self-hosted from the Academy deck system.
+   ============================================================ */
+
+@font-face {
+  font-family: "Spectral"; font-style: normal; font-weight: 300;
+  font-display: swap; src: url("assets/fonts/spectral-300.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Spectral"; font-style: normal; font-weight: 600;
+  font-display: swap; src: url("assets/fonts/spectral-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Spectral"; font-style: normal; font-weight: 700;
+  font-display: swap; src: url("assets/fonts/spectral-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 400;
+  font-display: swap; src: url("assets/fonts/inter-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 600;
+  font-display: swap; src: url("assets/fonts/inter-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400;
+  font-display: swap; src: url("assets/fonts/plexmono-400.woff2") format("woff2");
+}
+/* Yatra One — brush-drawn display Devanagari for the motto. Single weight (400),
+   which already reads bold. Subset to the motto's glyphs only: 12.6 KB. */
+@font-face {
+  font-family: "Yatra One"; font-style: normal; font-weight: 400;
+  font-display: swap; src: url("assets/fonts/yatra-one-400.woff2") format("woff2");
+}
+
+:root {
+  /* dark ground — from the Oxford Slate cover */
+  --grad-a:   #141d2a;
+  --grad-b:   #211912;
+  --grad-c:   #3c1f08;
+  --glow-hot: rgba(253, 118, 26, 0.50);
+  --glow-deep:rgba(157, 67, 0, 0.42);
+
+  --on-dark:        #fbf7f2;
+  --on-dark-muted:  #cdd5df;
+  --on-dark-faint:  rgba(251, 247, 242, 0.55);
+  --amber:          #fd9d52;
+  --tan:            #c89a72;
+
+  /* light ground */
+  --paper:      #faf7f2;
+  --paper-warm: #f4ece1;
+  --ink:        #231a13;
+  --ink-muted:  #5e5147;
+  --ink-faint:  #9a8b7d;
+  --rule:       #e6dbcc;
+
+  --brand:      #e84b14;
+  --brand-deep: #9d4300;
+  --accent:     #fd761a;
+
+  --serif: "Spectral", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans:  "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --deva:  "Yatra One", "Nirmala UI", "Noto Serif Devanagari",
+           "Kohinoor Devanagari", "Mangal", serif;
+
+  --maxw: 72rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 3.5vw, 2.75rem);
+}
+
+a { color: var(--brand); text-underline-offset: 0.2em; }
+a:hover { color: var(--brand-deep); }
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin: 0 0 1.25rem;
+}
+
+/* ---------------- masthead ---------------- */
+
+.masthead {
+  background:
+    radial-gradient(120% 95% at 86% 12%, var(--glow-hot), transparent 52%),
+    radial-gradient(85% 85% at 6% 96%, var(--glow-deep), transparent 60%),
+    linear-gradient(135deg, var(--grad-a) 0%, var(--grad-b) 58%, var(--grad-c) 100%);
+  color: var(--on-dark);
+  overflow: hidden;
+  padding-block: clamp(2.75rem, 6vw, 4.5rem);
+}
+
+.masthead .wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.75rem, 6vw, 4rem);
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+@media (min-width: 58rem) {
+  .masthead .wrap {
+    /* 60/40 — raise to 2.33fr for 70/30 */
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    justify-items: stretch;
+    text-align: left;
+  }
+}
+
+.masthead .copy { min-width: 0; }
+
+.masthead .emblem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.masthead .kicker { color: var(--amber); }
+
+.masthead h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5.4vw, 4rem);
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  color: var(--on-dark);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.masthead .tagline {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.125rem, 2.6vw, 1.5rem);
+  line-height: 1.45;
+  color: var(--on-dark-muted);
+  margin: 1.5rem 0 0;
+  max-width: 44ch;
+}
+
+.motto {
+  margin-top: clamp(1.25rem, 2.4vw, 1.5rem);
+  padding-top: clamp(1rem, 2.2vw, 1.25rem);
+  border-top: 1px solid rgba(251, 247, 242, 0.16);
+  width: min(100%, 24rem);
+  text-align: center;
+}
+
+.motto .sanskrit {
+  display: block;
+  font-family: var(--deva);
+  font-weight: 400;
+  /* Yatra One is a heavy brush face — it carries at a smaller size than Amita */
+  font-size: clamp(1.3125rem, 2.9vw, 1.6875rem);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: var(--amber);
+}
+
+.motto .gloss {
+  display: block;
+  margin-top: 0.55rem;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--tan);
+}
+
+.masthead .logo {
+  width: min(100%, clamp(12rem, 23vw, 18rem));
+  height: auto;
+  display: block;
+}
+
+.orange-rule {
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent), var(--brand) 55%, var(--brand-deep));
+}
+
+/* ---------------- info bar ---------------- */
+
+.infobar {
+  background: var(--paper-warm);
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.9375rem;
+}
+
+.infobar .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem clamp(1.5rem, 5vw, 3.5rem);
+  padding-block: 1.05rem;
+}
+
+.infobar span, .infobar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.infobar a:hover { color: var(--brand); }
+
+.infobar svg { width: 1rem; height: 1rem; flex: none; fill: var(--brand); }
+
+/* ---------------- sections ---------------- */
+
+section { padding-block: clamp(2.75rem, 6.5vw, 4.75rem); }
+
+section .kicker { color: var(--brand-deep); }
+
+h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.875rem, 4.2vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+  margin: 0 0 1.25rem;
+}
+
+.intro .lede {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2.8vw, 1.75rem);
+  line-height: 1.5;
+  max-width: 44ch;
+  margin: 0;
+}
+
+/* ---------------- capabilities ---------------- */
+
+.capabilities {
+  background: var(--paper-warm);
+  border-block: 1px solid var(--rule);
+}
+
+.cap-grid {
+  display: grid;
+  gap: clamp(2.25rem, 5vw, 3rem);
+  grid-template-columns: 1fr;
+  margin-top: 2.75rem;
+}
+
+@media (min-width: 54rem) {
+  .cap-grid { grid-template-columns: repeat(3, 1fr); gap: 3rem 2.75rem; }
+}
+
+.cap h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.4375rem;
+  line-height: 1.25;
+  margin: 0 0 0.75rem;
+}
+
+.cap h3::before {
+  content: "";
+  display: block;
+  width: 2.25rem;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--brand-deep));
+  margin-bottom: 1.15rem;
+}
+
+.cap p { margin: 0; color: var(--ink-muted); }
+.cap p + p { margin-top: 0.75rem; }
+
+/* ---------------- company ---------------- */
+
+.company .cols {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 54rem) {
+  .company .cols { grid-template-columns: 1.15fr 1fr; }
+}
+
+.company p { color: var(--ink-muted); margin: 0 0 1rem; max-width: 52ch; }
+
+/* ज्ञानकोश inline in the body copy — same face as the motto */
+.company em {
+  font-family: var(--deva);
+  font-weight: 400;   /* Yatra One ships one weight — avoids synthetic bolding */
+  font-style: normal;
+  font-size: 1.08em;
+  color: var(--ink);
+}
+
+.facts { margin: 0; border-top: 1px solid var(--rule); }
+
+.facts div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  justify-content: space-between;
+  padding-block: 0.9rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.facts dt {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0;
+  padding-top: 0.3rem;
+}
+
+.facts dd { margin: 0; text-align: right; }
+
+/* ---------------- contact ---------------- */
+
+.contact {
+  background:
+    radial-gradient(100% 120% at 50% -25%, var(--glow-hot), transparent 55%),
+    linear-gradient(135deg, var(--grad-a) 0%, var(--grad-b) 58%, var(--grad-c) 100%);
+  color: var(--on-dark);
+  text-align: center;
+}
+
+.contact .kicker { color: var(--amber); }
+.contact h2 { color: var(--on-dark); }
+
+.contact p {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
+  color: var(--on-dark-muted);
+  margin: 0 auto 2.25rem;
+  max-width: 44ch;
+}
+
+.contact .email {
+  display: inline-block;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.375rem, 4vw, 2.125rem);
+  color: var(--on-dark);
+  text-decoration: none;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--accent);
+  transition: color 0.15s ease;
+}
+
+.contact .email:hover { color: var(--amber); }
+
+/* ---------------- footer ---------------- */
+
+footer {
+  background: #16110c;
+  color: var(--on-dark-faint);
+  font-size: 0.8125rem;
+  padding-block: 2.25rem;
+}
+
+footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.75rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p { margin: 0; }
+footer .legal { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="copy">
+      <p class="kicker">Gyankosh Inc.</p>
+      <h1>Knowledge, built and taught.</h1>
+      <p class="tagline">
+        A Canadian software company working where learning meets technology —
+        teaching it, building it, and shipping it.
+      </p>
+    </div>
+
+    <div class="emblem">
+      <img class="logo" src="assets/logo-lockup.svg" alt="Gyankosh" width="294" height="191">
+      <div class="motto">
+        <span class="sanskrit">॥ ज्ञानम् परमं ध्येयम् ॥</span>
+        <span class="gloss">Knowledge is the supreme goal</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="orange-rule"></div>
+
+<div class="infobar">
+  <div class="wrap">
+    <span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+      Brampton, Ontario, Canada
+    </span>
+    <a href="mailto:hello@gyankosh.ca">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.24-8 4.76-8-4.76V6l8 4.76L20 6v2.24Z"/></svg>
+      hello@gyankosh.ca
+    </a>
+    <span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.93 6h-2.95a15.6 15.6 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8ZM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96ZM4.26 14a7.9 7.9 0 0 1 0-4h3.38a16.5 16.5 0 0 0 0 4H4.26Zm.81 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 0 1 5.07 16Zm2.95-8H5.07a8.03 8.03 0 0 1 4.33-3.56A15.6 15.6 0 0 0 8.02 8ZM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82A13.6 13.6 0 0 1 12 19.96ZM14.34 14H9.66a14.9 14.9 0 0 1 0-4h4.68a14.9 14.9 0 0 1 0 4Zm.26 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56ZM16.36 14a16.5 16.5 0 0 0 0-4h3.38a7.9 7.9 0 0 1 0 4h-3.38Z"/></svg>
+      gyankosh.ca
+    </span>
+  </div>
+</div>
+
+<main>
+
+  <section class="capabilities">
+    <div class="wrap">
+      <p class="kicker">What we do</p>
+      <h2>Three ways we work</h2>
+
+      <div class="cap-grid">
+        <div class="cap">
+          <h3>Training for individuals</h3>
+          <p>
+            Hands-on Generative AI training for developers and practitioners —
+            scheduled courses and private expert sessions that go past the demos
+            into how these systems actually behave.
+          </p>
+        </div>
+
+        <div class="cap">
+          <h3>Training for organizations</h3>
+          <p>
+            Structured programmes for teams adopting AI in their day-to-day work,
+            shaped around what your people build and the tools they already use.
+          </p>
+        </div>
+
+        <div class="cap">
+          <h3>Educational software</h3>
+          <p>
+            We design and publish our own learning products for web and mobile,
+            built around how people genuinely practise and retain what they learn
+            rather than around volume of content.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="company">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <p class="kicker">The company</p>
+          <h2>Small by design, deliberate by habit.</h2>
+          <p>
+            Gyankosh takes its name from the Sanskrit <em>ज्ञानकोश</em> — a treasury
+            of knowledge. The work follows from that: build things worth learning
+            from, and teach them properly.
+          </p>
+          <p>
+            We keep the operation small and the standards high. Everything we
+            publish is our own — designed, built, and shipped end to end rather
+            than assembled to a brief.
+          </p>
+        </div>
+
+        <dl class="facts">
+          <div><dt>Legal entity</dt><dd>Gyankosh Inc.</dd></div>
+          <div><dt>Incorporation</dt><dd>Federal, Canada (CBCA)</dd></div>
+          <div><dt>Registered office</dt><dd>Brampton, Ontario</dd></div>
+          <div><dt>Enquiries</dt><dd><a href="mailto:hello@gyankosh.ca">hello@gyankosh.ca</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="wrap">
+      <p class="kicker">Get in touch</p>
+      <h2>A course, a programme, or a conversation.</h2>
+      <p>
+        Whether you are learning on your own account or planning a training
+        programme for your team — write to us.
+      </p>
+      <a class="email" href="mailto:hello@gyankosh.ca">hello@gyankosh.ca</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Gyankosh Inc.</p>
+    <div class="legal">
+      <p>Federally incorporated in Canada</p>
+      <p>Brampton, Ontario</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
