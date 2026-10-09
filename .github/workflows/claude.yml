@@ -19,6 +19,7 @@ jobs:
       issues: write
       id-token: write
       actions: read
+      statuses: write
     with:
       checks: "the checks AGENTS.md names"
       base: main
